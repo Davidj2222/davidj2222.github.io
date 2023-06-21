@@ -8,7 +8,7 @@
 		.box {
 			width: 70px;
 			height: 70px;
-			background-color: teal;
+			background-color: pink;
 			font-size: 300%;
 			text-align: center;
 			user-select: none;
@@ -25,6 +25,7 @@
 
 </head>
 <body class="board">
+	<img width="100%" src="https://png.pngtree.com/background/20230410/original/pngtree-game-space-background-picture-image_2381518.jpg" alt="">
 	<!-- HTML for the box -->
 	<div class="box">?</div>
 
@@ -62,7 +63,9 @@
 			//////////////////////////////////////////////////////////////////
 			
 			// TODO 2 - Variable declarations 
-			
+			var speed = 10;
+			var positionX = 0;
+			var points = 0;
 
 			
 			/* 
@@ -71,8 +74,14 @@
 			turn it around! 
 			*/
 			function update() {
-				
-
+				positionX = positionX + speed;
+				moveBoxTo(positionX);
+				if (positionX > boardWidth) {
+					speed *= -1
+				}
+				if (positionX < 0) {
+					speed *= -1
+				}
 			};
 
 			/* 
@@ -81,7 +90,10 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-				
+				points = points + 1
+				positionX = 0
+				speed = speed +1.5;
+				changeBoxText(points);
 
 
 			};
